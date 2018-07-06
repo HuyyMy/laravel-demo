@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +14,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::group(['namespace' => 'Web'], function () {
+
+    // 默认欢迎页。
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    // 用户登录，注册，找回密码。
+    Auth::routes();
+
+    // 默认主页。
+    Route::get('/home', 'DefaultsController@index')->name('home');
 });
