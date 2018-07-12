@@ -36,4 +36,17 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data,[
+             'name'     => 'required|string|max:255',
+             'password' => 'required|string|min6|confirmed',
+             'captcha'  => 'required|captcha'
+        ], [
+            'captcha.required' => '验证码 不能为空',
+            'captcha.captcha'  => '请输入正确的验证码',
+        ]);
+    }
+
 }

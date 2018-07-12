@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
-use Illuminate\Http\Request;
+use  Illuminate \Http\Request;
+use App\Http\Controllers\Controller;
 
 class DefaultsController extends Controller
 {
@@ -23,6 +24,6 @@ class DefaultsController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('web.defaults.home');
     }
 }

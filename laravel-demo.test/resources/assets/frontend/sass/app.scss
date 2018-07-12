@@ -1,0 +1,68 @@
+
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+
+// Variables
+@import "variables";
+
+// Font Awesome
+@import '~font-awesome/scss/font-awesome.scss';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//App
+html {
+  position: relative;
+  min-height:100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.easyedu-navbar {
+  border-color:#e7e7e7;
+  background-color: #fff;
+  border-top: 4px solid #f06665;
+  margin-bottom: 40px;
+  margin-top: 0;
+
+  .easyedu-nav-right .dropdown-menu {
+    padding: 0;
+    margin-top: 8px;
+
+    a {
+      border-bottom: 1px solid #d8d8d8;
+      line-height: 2;
+
+      .fa {
+        margin-right: 6px;
+      }
+    }
+  }
+}
+.form-group {
+  .img-captcha {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+.easyedu-footer {
+  position: absolute;
+  bottom:0;
+  width:100%;
+  height:60px;
+  background-color: #000;
+  .container{
+    padding-right: 15px;
+    padding-left: 15px;
+    p {
+      margin : 19px 0;
+      color:#c1c1c1;
+      a{
+        color:inherit;
+      }
+    }
+  }
+}
