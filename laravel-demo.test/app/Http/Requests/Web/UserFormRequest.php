@@ -11,7 +11,6 @@ namespace App\Http\Requests\Web;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-
 class UserFormRequest extends FormRequest
 {
     /**

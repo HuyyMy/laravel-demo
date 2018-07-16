@@ -19,7 +19,7 @@ class UsersController extends Controller
      */
     public function show(Request $request, User $user)
     {
-        return view('web.users.show',compact('user'));
+        return view('web.users.show', compact('user'));
     }
 
     /**
@@ -38,12 +38,10 @@ class UsersController extends Controller
     public function update(
         UserFormRequest $request,
         User $user
-    )
-    {
+    ) {
         $data = $request->all();
 
         if ($request->avatar) {
-
         }
         $user->update($data);
 

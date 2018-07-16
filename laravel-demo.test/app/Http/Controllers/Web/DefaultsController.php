@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Web;
 
-use  Illuminate \Http\Request;
+use Illuminate \Http\Request;
 use App\Http\Controllers\Controller;
 
 class DefaultsController extends Controller
