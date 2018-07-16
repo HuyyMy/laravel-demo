@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     protected function validator(array $data)
     {
-        return Validator::make($data,[
+        return Validator::make($data, [
              'name'     => 'required|string|max:255',
              'password' => 'required|string|min6|confirmed',
              'captcha'  => 'required|captcha'
@@ -48,5 +48,4 @@ class LoginController extends Controller
             'captcha.captcha'  => '请输入正确的验证码',
         ]);
     }
-
 }

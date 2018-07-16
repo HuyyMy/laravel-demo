@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- CSRF Token E --}}
 
-    <title>@yield('title', config('app.name')) - Laravel</title>
+    <title>@yield('title', config('app.name')) - Blog</title>
     <meta name="description" content="@yield('description', 'Laravel')">
     <meta name="keyword" content="@yield('keyword', 'Laravel')">
     <link rel="shortcut icon" href="/favicon.png">
@@ -25,7 +25,7 @@
 <div id="app" class="{{ route_class() }}-page">
     @include('web.layouts._header')
 
-    <main class="lbs-main">
+    <main class="easyedu-main">
         @include('web.layouts._message')
         @yield('content')
     </main>

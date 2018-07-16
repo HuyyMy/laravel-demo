@@ -41,17 +41,19 @@
             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
               <span>
-                <img class="rounded-circle" src="http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Ji3ohCho5Quov5UL.jpg" width="30px" height="30px" alt="头像">
+                <img class="rounded-circle"
+                     src="http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Ji3ohCho5Quov5UL.jpg" width="30px"
+                     height="30px" alt="头像">
               </span>
               {{ Auth::user()->name }}
               <span class="caret"></span>
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a href="#" class="dropdown-item">
+              <a href="{{ route('users.show', Auth::id()) }}" class="dropdown-item">
                 <i class="fa fa-user"></i> 个人中心
               </a>
-              <a href="#" class="dropdown-item">
+              <a href="{{ route('users.edit', Auth::id()) }}" class="dropdown-item">
                 <i class="fa fa-edit"></i> 编辑资料
               </a>
               <a href="{{ route('logout') }}" class="dropdown-item"

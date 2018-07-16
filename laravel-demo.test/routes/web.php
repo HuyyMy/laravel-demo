@@ -18,7 +18,7 @@ Route::group(['namespace' => 'Web'], function () {
 
     // 默认欢迎页。
     Route::get('/', function () {
-        return view('welcome');
+        return view('welcome', ['website' => 'Huyy\'s Blog']);
     });
 
     // 用户登录，注册，找回密码。
@@ -26,4 +26,7 @@ Route::group(['namespace' => 'Web'], function () {
 
     // 默认主页。
     Route::get('/home', 'DefaultsController@index')->name('home');
+
+    // 用户中心
+    Route::resource('users', 'UsersController', ['only' => ['show', 'update', 'edit']]);
 });
