@@ -62,8 +62,8 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\User
+     * @param array $data
+     * @return mixed
      */
     protected function create(array $data)
     {
@@ -71,6 +71,7 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'avatar'   => 'http://pbfa6u6aq.bkt.clouddn.com/image/user/avatar/Oorooyealai9dobo.jpg',
         ]);
     }
 }

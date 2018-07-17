@@ -15,8 +15,7 @@
                                 <label for="name" class="col-md-4 col-form-label text-md-right">用&ensp;户&ensp;名</label>
 
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           name="name" value="{{ old('name') }}" autofocus>
+                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -30,8 +29,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">邮箱地址</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" value="{{ old('email') }}">
+                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}">
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -45,13 +43,12 @@
                                 <label for="password" class="col-md-4 col-form-label text-md-right">密&emsp;&emsp;码</label>
 
                                 <div class="col-md-6">
-                                    <input id="password" type="password"
-                                           class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
+                                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password">
 
                                     @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                                     @endif
                                 </div>
                             </div>
@@ -65,17 +62,15 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="captcha"
-                                       class="col-md-4 col-form-label text-md-right">验&ensp;证&ensp;码</label>
+                                <label for="captcha" class="col-md-4 col-form-label text-md-right">验&ensp;证&ensp;码</label>
                                 <div class="col-md-6">
-                                    <input id="captcha" type="text" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}"
-                                           name="captcha">
+                                    <input id="captcha" type="text" class="form-control{{ $errors->has('captcha') ? ' is-invalid' : '' }}" name="captcha">
                                     <img class="img-thumbnail img-captcha" src="{{ captcha_src('flat') }}"
                                          onclick="this.src='/captcha/flat?'+Math.random()" title="点击图片重新获取验证码">
                                     @if ($errors->has('captcha'))
                                         <span class="invalid-feedback">
-                                            <strong>{{ $errors->first('captcha') }}</strong>
-                                        </span>
+                      <strong>{{ $errors->first('captcha') }}</strong>
+                    </span>
                                     @endif
                                 </div>
                             </div>

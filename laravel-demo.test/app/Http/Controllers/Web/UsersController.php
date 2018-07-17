@@ -6,14 +6,25 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\UserFormRequest;
+use App\Handlers\ImageHandler;
 
 class UsersController extends Controller
 {
     /**
-     * 用户详情页
+     * Create a new controller instance.
      *
-     * @param Request $request
-     * @param User $user
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['show']]);
+    }
+
+    /**
+     * 用户详情页。
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
@@ -23,25 +34,47 @@ class UsersController extends Controller
     }
 
     /**
-     * 编辑
+     * 用户编辑页。
      *
-     * @param Request $request
-     * @param User $user
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\User         $user
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit(Request $request, User $user)
     {
+        $this->authorize('update', $user);
+
         return view('web.users.edit', compact('user'));
     }
 
+    /**
+     * 用户更新操作。
+     *
+     * @param \App\Http\Requests\Web\UserFormRequest $request
+     * @param \App\Models\User                       $user
+     * @param \App\Handlers\ImageHandler             $handler
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
     public function update(
         UserFormRequest $request,
-        User $user
+        User $user,
+        ImageHandler $handler
     ) {
+        $this->authorize('update', $user);
         $data = $request->all();
 
         if ($request->avatar) {
+            $result = $handler->upload($request->avatar, 'avatars', $user->id, 365);
+
+            if ($result) {
+                $data['avatar'] = $result['path'];
+            }
         }
         $user->update($data);
 
