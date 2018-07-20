@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     {{-- CSRF Token E --}}
 
-    <title>@yield('title', config('app.name')) - Blog</title>
+    <title>@yield('title', config('app.name')) - Laravel</title>
     <meta name="description" content="@yield('description', 'Laravel')">
     <meta name="keyword" content="@yield('keyword', 'Laravel')">
     <link rel="shortcut icon" href="/favicon.png">

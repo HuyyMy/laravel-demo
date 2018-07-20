@@ -13472,7 +13472,25 @@ html {
 }
 
 body {
+  /* Margin bottom by footer height */
   margin-bottom: 60px;
+}
+
+.card {
+  border-color: #d3e0e9;
+}
+
+.card .card-header {
+  border-color: #d3e0e9;
+}
+
+.easyedu-main .card {
+  margin-bottom: 20px;
+}
+
+.form-group .img-captcha {
+  margin-top: 10px;
+  cursor: pointer;
 }
 
 .easyedu-navbar {
@@ -13501,6 +13519,7 @@ body {
   position: absolute;
   bottom: 0;
   width: 100%;
+  /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #000;
 }
@@ -13518,4 +13537,3 @@ body {
 .easyedu-footer .container p a {
   color: inherit;
 }
-

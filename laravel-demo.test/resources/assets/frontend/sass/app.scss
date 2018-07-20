@@ -12,17 +12,38 @@
 @import '~bootstrap/scss/bootstrap';
 
 //App
+// App
 html {
   position: relative;
-  min-height:100%;
+  min-height: 100%;
 }
 
 body {
+  /* Margin bottom by footer height */
   margin-bottom: 60px;
 }
 
+.card {
+  border-color: #d3e0e9;
+}
+
+.card .card-header {
+  border-color: #d3e0e9;
+}
+
+.easyedu-main .card {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  .img-captcha {
+    margin-top: 10px;
+    cursor: pointer;
+  }
+}
+
 .easyedu-navbar {
-  border-color:#e7e7e7;
+  border-color: #e7e7e7;
   background-color: #fff;
   border-top: 4px solid #f06665;
   margin-bottom: 40px;
@@ -42,26 +63,93 @@ body {
     }
   }
 }
+
+.easyedu-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    p {
+      margin: 19px 0;
+      color: #c1c1c1;
+      a {
+        color: inherit;
+      }
+    }
+  }
+}
+// App
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.card {
+  border-color: #d3e0e9;
+}
+
+.card .card-header {
+  border-color: #d3e0e9;
+}
+
+.easyedu-main .card {
+  margin-bottom: 20px;
+}
+
 .form-group {
   .img-captcha {
     margin-top: 10px;
     cursor: pointer;
   }
 }
+
+.easyedu-navbar {
+  border-color: #e7e7e7;
+  background-color: #fff;
+  border-top: 4px solid #f06665;
+  margin-bottom: 40px;
+  margin-top: 0;
+
+  .easyedu-nav-right .dropdown-menu {
+    padding: 0;
+    margin-top: 8px;
+
+    a {
+      border-bottom: 1px solid #d8d8d8;
+      line-height: 2;
+
+      .fa {
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
 .easyedu-footer {
   position: absolute;
-  bottom:0;
-  width:100%;
-  height:60px;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
   background-color: #000;
-  .container{
+  .container {
     padding-right: 15px;
     padding-left: 15px;
     p {
-      margin : 19px 0;
-      color:#c1c1c1;
-      a{
-        color:inherit;
+      margin: 19px 0;
+      color: #c1c1c1;
+      a {
+        color: inherit;
       }
     }
   }
