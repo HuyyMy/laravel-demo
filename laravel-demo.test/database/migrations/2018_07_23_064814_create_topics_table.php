@@ -50,7 +50,7 @@ class CreateTopicsTable extends Migration
                 ->comment('文章摘要');
             $table->string('slug')
                 ->nullable()
-                ->default(NULL)
+                ->default(null)
                 ->comment('其它');
             $table->timestamp('created_at')
                 ->nullable()

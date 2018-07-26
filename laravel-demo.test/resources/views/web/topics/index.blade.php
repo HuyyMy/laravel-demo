@@ -15,7 +15,7 @@
                     <div class="card-header">
                         <nav class="nav nav-pills nav-justified">
                             <a href="{{Request::url()}}?order=default" class="nav-link">最后回复</a>
-                            <a href="{{Request::url()}}?order=recent" class="nav-link">最新发布</a>
+                            <a href="{{ Request::url()}}" class="nav-link">最新发布</a>
                         </nav>
                     </div>
                     <div class="card-body">

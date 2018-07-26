@@ -90,11 +90,13 @@ class TopicsController extends Controller
      */
     public function destroy(Topic $topic)
     {
-
     }
 
-    public function list()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function list(Request $request, Topic $topic)
     {
-        return view('web.topics.list');
+        return view('web.topics.list', compact('topic'));
     }
 }

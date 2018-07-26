@@ -39,6 +39,7 @@ class SeedCategoriesData extends Migration
         $categories = array_map(function (& $value) use ($now) {
             $value['created_at'] = $now;
             $value['updated_at'] = $now;
+            $value['post_count'] = 0;
 
             return $value;
         }, $categories);
