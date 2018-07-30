@@ -11,8 +11,20 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
-                <li class="#">
-                    <a href="#" class="nav-link"> 首页<span class="sr-only"></span></a>
+                <li class="{{active_class(if_route('topics.index'))}}">
+                    <a href="{{route('topics.index')}}" class="nav-link"> 首页<span class="sr-only"></span></a>
+                </li>
+                <li class="{{active_class((if_route('categories.show') && if_route_param('category', 1)))}}">
+                    <a href="{{ route('categories.show', 1) }}" class="nav-link">分享<span class="sr-only"></span></a>
+                </li>
+                <li class="{{active_class((if_route('categories.show') && if_route_param('category', 2)))}}">
+                    <a href="{{route('categories.show', 2)}}" class="nav-link">教程<span class="sr-only"></span></a>
+                </li>
+                <li class="{{active_class((if_route('categories.show') && if_route_param('category', 3)))}}">
+                    <a href="{{route('categories.show', 3)}}" class="nav-link">对话<span class="sr-only"></span></a>
+                </li>
+                <li class="{{active_class((if_route('categories.show') && if_route_param('category', 4)))}}">
+                    <a href="{{route('categories.show', 4)}}" class="nav-link">公告<span class="sr-only"></span></a>
                 </li>
             </ul>
 
