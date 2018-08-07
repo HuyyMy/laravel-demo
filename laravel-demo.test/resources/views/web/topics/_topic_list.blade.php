@@ -13,11 +13,11 @@
                         <a href="{{ route('categories.show', $topic->category->id) }}" title="{{ $topic->category->name }}">
                             <i class="fa fa-folder-open"></i> {{ $topic->category->name }}
                         </a>
-                        <sapn>&nbsp;•&nbsp;</sapn>
+                        <span>&nbsp;•&nbsp;</span>
                         <a href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}">
                             <i class="fa fa-user"></i> {{ $topic->user->name }}
                         </a>
-                        <sapn>&nbsp;•&nbsp;</sapn>
+                        <span>&nbsp;•&nbsp;</span>
                         <i class="fa fa-clock-o"></i>
                         <span class="timeago" title="最后活跃于">{{ $topic->updated_at->diffForHumans() }}</span>
                     </div>

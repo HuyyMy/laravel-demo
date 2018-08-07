@@ -13515,6 +13515,47 @@ body {
   margin-right: 6px;
 }
 
+.welcome-page .topic-list a,
+.topics-index-page .topic-list a,
+.categories-show-page .topic-list a {
+  color: #444;
+}
+
+.welcome-page .topic-list .media-meta,
+.topics-index-page .topic-list .media-meta,
+.categories-show-page .topic-list .media-meta {
+  font-size: 0.9em;
+  color: #b3b3b3;
+}
+
+.welcome-page .topic-list .media-meta a,
+.topics-index-page .topic-list .media-meta a,
+.categories-show-page .topic-list .media-meta a {
+  color: #b3b3b3;
+}
+
+.users-show-page .nav-tabs {
+  margin-bottom: 20px;
+}
+
+.users-show-page .nav-tabs > li.active > a {
+  background-color: #fff;
+}
+
+.users-show-page .list-group .list-group-item {
+  border: none;
+  margin-bottom: 0;
+  border-bottom: 1px solid #efefef;
+}
+
+.users-show-page .list-group .list-group-item .meta {
+  color: #b3b3b3;
+}
+
+.users-show-page .pagination {
+  margin: 20px 0;
+}
+
 .easyedu-footer {
   position: absolute;
   bottom: 0;
@@ -13537,3 +13578,76 @@ body {
 .easyedu-footer .container p a {
   color: inherit;
 }
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
+.card {
+  border-color: #d3e0e9;
+}
+
+.card .card-header {
+  border-color: #d3e0e9;
+}
+
+.easyedu-main .card {
+  margin-bottom: 20px;
+}
+
+.form-group .img-captcha {
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.easyedu-navbar {
+  border-color: #e7e7e7;
+  background-color: #fff;
+  border-top: 4px solid #f06665;
+  margin-bottom: 40px;
+  margin-top: 0;
+}
+
+.easyedu-navbar .easyedu-nav-right .dropdown-menu {
+  padding: 0;
+  margin-top: 8px;
+}
+
+.easyedu-navbar .easyedu-nav-right .dropdown-menu a {
+  border-bottom: 1px solid #d8d8d8;
+  line-height: 2;
+}
+
+.easyedu-navbar .easyedu-nav-right .dropdown-menu a .fa {
+  margin-right: 6px;
+}
+
+.easyedu-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #000;
+}
+
+.easyedu-footer .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.easyedu-footer .container p {
+  margin: 19px 0;
+  color: #c1c1c1;
+}
+
+.easyedu-footer .container p a {
+  color: inherit;
+}
+

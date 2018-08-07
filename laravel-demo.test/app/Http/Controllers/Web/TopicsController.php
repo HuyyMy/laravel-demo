@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class TopicsController extends Controller
 {
@@ -31,6 +32,17 @@ class TopicsController extends Controller
         $topics = $topic->withOrder($request->order)->paginate(20);
 
         return view('web.topics.index', compact('topics'));
+    }
+
+    public function store(TopicFormRequest $request, Topic $topic)
+    {
+        $topic->fill($request->all());
+        $topic->user_id = Auth::id();
+        $topic->save();
+
+        return redirect()
+            ->to($topic->link())
+            ->with(['message' => '话题创建成功！']);
     }
 
     /**

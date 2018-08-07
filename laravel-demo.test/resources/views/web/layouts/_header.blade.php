@@ -40,7 +40,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{route('topics.create')}}" class="nav-link">
                             <span><i class="fa fa-plus"></i></span>
                         </a>
                     </li>

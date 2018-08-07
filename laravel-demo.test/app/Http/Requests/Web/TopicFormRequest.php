@@ -13,20 +13,39 @@ class TopicFormRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
+    /**
+     * @return array
+     */
     public function rules()
     {
-        return [
-//            'title'       => 'required',
-//            'category_id' => 'required',
-//            'body'        => 'required'
-        ];
+        switch ($this->method()) {
+            case 'POST':
+            case 'PUT':
+            case 'PATCH':
+                {
+                    return [
+                        'title'       => 'required|min:3',
+                        'body'        => 'required|min:6',
+                        'category_id' => 'required|numeric',
+                    ];
+                }
+            case 'GET':
+            case 'DELETE':
+            default:
+                return [];
+        }
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'title.min'            => '标题至少三个字符。',
+            'body.min'             => '内容至少六个字符。',
+            'body.required'        => '内容不能为空。',
+            'category_id.required' => '请选择分类',
+        ];
     }
 }

@@ -41,6 +41,7 @@
                    class="nav-link ">Ta 的回复</a>
               </li>
             </ul>
+            @include('web.users._topics', ['topics' => $user->topics()->withOrder('recent')->paginate(5)])
           </div>
         </div>
       </div>
