@@ -3,12 +3,9 @@
 namespace App\Policies\Web;
 
 use App\Models\User;
-use Illuminate\Auth\Access\HandlesAuthorization;
 
-class UserPolicy
+class UserPolicy extends Policy
 {
-    use HandlesAuthorization;
-
     /**
      * Create a new policy instance.
      *

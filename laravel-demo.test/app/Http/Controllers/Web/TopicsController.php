@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Web;
 
+use App\Handlers\ImageHandler;
 use App\Http\Requests\Web\TopicFormRequest;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
@@ -42,7 +44,7 @@ class TopicsController extends Controller
 
         return redirect()
             ->to($topic->link())
-            ->with(['message' => '话题创建成功！']);
+            ->with(['success' => '话题创建成功！']);
     }
 
     /**
@@ -81,7 +83,16 @@ class TopicsController extends Controller
      */
     public function edit(Topic $topic)
     {
-        return view('web.topics.topic');
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthorizationException $e) {
+        }
+        $categories = Category::all();
+
+        return view('web.topics.topic', compact(
+            'topic',
+            'categories'
+        ));
     }
 
     /**
@@ -94,7 +105,16 @@ class TopicsController extends Controller
      */
     public function update(TopicFormRequest $request, Topic $topic)
     {
-        return view();
+        try {
+            $this->authorize('update', $topic);
+        } catch (AuthenticationException $e) {
+
+        }
+        $topic->update($request->all());
+
+        return redirect()
+            ->to($topic->link())
+            ->with(['success' => '话题更新成功！']);
     }
 
     /**
@@ -104,6 +124,16 @@ class TopicsController extends Controller
      */
     public function destroy(Topic $topic)
     {
+        try {
+            $this->authorize('destroy', $topic);
+        } catch (AuthenticationException $e) {
+
+        }
+        $topic->delete();
+
+        return redirect()
+            ->route('topics.index')
+            ->with(['success' => '话题删除成功！']);
     }
 
     /**
@@ -112,5 +142,36 @@ class TopicsController extends Controller
     public function list(Request $request, Topic $topic)
     {
         return view('web.topics.list', compact('topic'));
+    }
+
+    /**
+     * 上传话题图片
+     *
+     * @param Request $request
+     * @param ImageHandler $handler
+     *
+     * @return array
+     */
+    public function upload(Request $request, ImageHandler $handler)
+    {
+        $data = [
+            'status' => false,
+            'msg'    => '上传失败',
+            'path'   => '',
+        ];
+
+        if ($file = $request->uploader) {
+            $result = $handler->upload($request->uploader, 'topics', Auth::id(), 1024);
+
+            if ($result) {
+                $data = [
+                    'status' => true,
+                    'msg'    => '上传成功',
+                    'path'   => $result['path'],
+                ];
+            }
+        }
+
+        return $data;
     }
 }
