@@ -161,7 +161,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
         HieuLe\Active\ActiveServiceProvider::class,
-
+        Overtrue\LaravelPinyin\ServiceProvider::class,
+        Mews\Purifier\PurifierServiceProvider::class,
     ],
 
     /*
@@ -212,6 +213,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Captcha' => Mews\Captcha\Facades\Captcha::class,
         'Active' => HieuLe\Active\Facades\Active::class,
+        'Pinyin' => Overtrue\LaravelPinyin\Facades\Pinyin::class,
+        'Purifier' => Mews\Purifier\Facades\Purifier::class,
 
     ],
 

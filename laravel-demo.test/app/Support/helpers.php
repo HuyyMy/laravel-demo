@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hyyph
- * Date: 2018/7/12
- * Time: 13:30
- */
 
 if (! function_exists('route_class')) {
     /**
@@ -27,9 +21,22 @@ if (! function_exists('route_class')) {
          */
         function make_excerpt($text, $length = 200)
         {
-            $excerpt = trim(preg_match('/\r\n|\r|\n+/', '', strip_tags($text)));
+            $excerpt = trim(preg_replace('/\r\n|\r|\n+/', '', strip_tags($text)));
 
             return str_limit($excerpt, $length);
+        }
+    }
+
+    if (!function_exists('clean')) {
+
+        /**
+         * @param $dirty
+         * @param null $config
+         * @return mixed
+         */
+        function clean($dirty, $config = null)
+        {
+            return app('purifier')->clean($dirty, $config);
         }
     }
 }

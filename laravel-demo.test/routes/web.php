@@ -35,6 +35,10 @@ Route::group(['namespace' => 'Web'], function () {
 
     // 话题
     Route::resource('topics', 'TopicsController');
+    Route::resource('topics', 'TopicsController', [
+        'only' => ['index', 'create', 'store', 'update', 'edit', 'destroy'],
+    ]);
 
+    Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
     Route::post('upload', 'TopicsController@upload')->name('topics.upload');
 });

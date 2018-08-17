@@ -30,9 +30,18 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Models\User::class,
+        'model' => \App\Models\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
+    ],
+
+    'translate' => [
+        'driver' => env('TRANSLATE_DRIVER', 'baidu'),
+        'baidu' => [
+            'url'    => env('BAIDU_TRANSLATE_URL'),
+            'key'    => env('BAIDU_TRANSLATE_KEY'),
+            'secret' => env('BAIDU_TRANSLATE_SECRET'),
+            ],
     ],
 
 ];

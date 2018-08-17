@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Web;
 
 use App\Handlers\ImageHandler;
+use App\Handlers\TranslateHandler;
 use App\Http\Requests\Web\TopicFormRequest;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
@@ -48,15 +49,19 @@ class TopicsController extends Controller
     }
 
     /**
-     * 话题页
+     * 话题详情
      *
      * @param Request $request
      * @param Topic $topic
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
      */
     public function show(Request $request, Topic $topic)
     {
+        if (! empty($topic->slug) && $topic->slug !== $request->slug) {
+            return redirect($topic->link(), 301);
+        }
+
         return view('web.topics.show', compact('topic'));
     }
 
@@ -103,13 +108,16 @@ class TopicsController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function update(TopicFormRequest $request, Topic $topic)
+    public function update(TopicFormRequest $request, Topic $topic, TranslateHandler $translate)
     {
         try {
             $this->authorize('update', $topic);
         } catch (AuthenticationException $e) {
 
         }
+
+        $topic->fill($request->all());
+        $topic->slug = $translate->translateText($request->title);
         $topic->update($request->all());
 
         return redirect()
