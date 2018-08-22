@@ -34,11 +34,16 @@ Route::group(['namespace' => 'Web'], function () {
     Route::resource('categories', 'CategoriesController', ['only' => ['show']]);
 
     // 话题
-    Route::resource('topics', 'TopicsController');
     Route::resource('topics', 'TopicsController', [
         'only' => ['index', 'create', 'store', 'update', 'edit', 'destroy'],
     ]);
 
     Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
     Route::post('upload', 'TopicsController@upload')->name('topics.upload');
+
+    // 话题回复
+    Route::resource('replies', 'RepliesController', ['only' => ['store', 'destroy']]);
+
+    // 回复通知
+    Route::resource('notifications', 'NotificationsController', ['only' => ['index']]);
 });

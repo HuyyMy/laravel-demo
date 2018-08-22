@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Web;
 use App\Handlers\ImageHandler;
 use App\Handlers\TranslateHandler;
 use App\Http\Requests\Web\TopicFormRequest;
-use Illuminate\Auth\AuthenticationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\Access\HandlesAuthorization;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Topic;
@@ -37,6 +38,12 @@ class TopicsController extends Controller
         return view('web.topics.index', compact('topics'));
     }
 
+    /**
+     * @param TopicFormRequest $request
+     * @param Topic $topic
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(TopicFormRequest $request, Topic $topic)
     {
         $topic->fill($request->all());
@@ -112,7 +119,7 @@ class TopicsController extends Controller
     {
         try {
             $this->authorize('update', $topic);
-        } catch (AuthenticationException $e) {
+        } catch (AuthorizationException $e) {
 
         }
 
@@ -134,7 +141,7 @@ class TopicsController extends Controller
     {
         try {
             $this->authorize('destroy', $topic);
-        } catch (AuthenticationException $e) {
+        } catch (AuthorizationException $e) {
 
         }
         $topic->delete();

@@ -13987,6 +13987,25 @@ body {
   color: #b3b3b3;
 }
 
+.welcome-page .topic-list hr,
+.topics-index-page .topic-list hr,
+.categories-show-page .topic-list hr {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border: 0;
+  border-top: 1px solid #dcebf5;
+}
+
+.topics-show-page .card {
+  padding: 15px;
+}
+
+.topics-show-page .card h1 {
+  margin: 0.4em auto 0.6em;
+  font-size: 28px;
+  line-height: 38px;
+}
+
 .users-show-page .nav-tabs {
   margin-bottom: 20px;
 }

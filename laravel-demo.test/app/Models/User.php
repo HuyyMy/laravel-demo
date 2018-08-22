@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable {
+     notify as protected inform;
+    }
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +35,13 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function notify($instance)
+    {
+        if ($this->id === Auth::id()) {
+            return;
+        }
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -46,8 +57,26 @@ class User extends Authenticatable
      *
      * @return bool
      */
-    public function isAuthor(\Illuminate\Database\Eloquent\Model $model)
+    public function isAuthor(Model $model)
     {
         return $this->id === $model->user_id;
+    }
+
+    /**
+     * 标记已读
+     */
+    public function markAsRead()
+    {
+        $this->notification_count = 0;
+        $this->save();
+        $this->unreadNotifications()->update(['read_at' => now()]);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function replies()
+    {
+        return $this->hasMany(Reply::class);
     }
 }
