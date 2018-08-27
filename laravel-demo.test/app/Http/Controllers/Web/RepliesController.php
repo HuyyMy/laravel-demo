@@ -57,7 +57,7 @@ class RepliesController extends Controller
         $reply->delete();
 
         return redirect()
-            ->to($reply->tipic->link())
+            ->to($reply->topic->link())
             ->with('success', '删除成功！');
     }
 }

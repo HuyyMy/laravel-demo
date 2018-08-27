@@ -40,6 +40,9 @@ class User extends Authenticatable
         if ($this->id === Auth::id()) {
             return;
         }
+
+        $this->increment('notification_count');
+        $this->inform($instance);
     }
 
     /**

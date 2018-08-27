@@ -8,7 +8,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ReplyNotification extends Notification
+class ReplyNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -35,7 +35,7 @@ class ReplyNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
@@ -46,7 +46,7 @@ class ReplyNotification extends Notification
     public function toDatabase($notifiable)
     {
         $topic = $this->reply->topic;
-        $link = $topic->link(['#reply' . $this->reply->id]);
+        $link  = $topic->link(['#reply' . $this->reply->id]);
 
         return [
             'reply_id' => $this->reply->id,
@@ -72,4 +72,18 @@ class ReplyNotification extends Notification
             //
         ];
     }
+
+    /**
+     * @param $notifiable
+     *
+     * @return $this
+     */
+   public function toMail($notifiable)
+   {
+       $url = $this->reply->topic->link(['#reply' . $this->reply->id]);
+
+       return (new MailMessage())
+           ->line('你的话题有新的回复！')
+           ->action('查看回复', $url);
+   }
 }
