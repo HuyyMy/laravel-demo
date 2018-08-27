@@ -20,14 +20,15 @@ class ReplyObserver
      */
     public function created(Reply $reply)
     {
-        $topic = $reply->topic;
-        $topic->increment('reply_count', 1);
-        $topic->user->notify(new ReplyNotification($reply));
+        $reply->topic->increment('reply_count', 1);
+        $reply->topic->user->notify(new ReplyNotification($reply));
     }
 
+    /**
+     * @param Reply $reply
+     */
     public function deleted(Reply $reply)
     {
-        $topic = $reply->topic;
-        $topic->decrement('reply_count', 1);
+        $reply->topic->decrement('reply_count', 1);
     }
 }
